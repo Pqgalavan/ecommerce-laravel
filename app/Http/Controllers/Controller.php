@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\catogeries;
+// use Facade\FlareClient\Stacktrace\File;
 // use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+// use Illuminate\Http\File ;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request ;
 use Illuminate\Routing\Controller as BaseController;
 // use Illuminate\Support\Facades\Request as FacadesRequest;
@@ -78,6 +81,7 @@ public function editcat($id){
 
     $editcat = catogeries::find($id);
 
+
     return view('admin.editcatogeries',compact('editcat'));
 
 }
@@ -86,8 +90,43 @@ public function dltcat($id){
     $deletecat = catogeries::find($id);
 
     $deletecat->delete();
-    return view('admin.view')->with('status','Data Deleted Sucessfully');
+    return redirect('/view_catogeries')->with('status','Data Deleted Sucessfully');
 
+
+}
+public function edited(Request $request , $id){
+
+
+    $updatecat = catogeries::find($id);
+
+
+    if($request->hasFile('image')){
+        $path = 'uploads/catogery'.$updatecat->image;
+        if(File::exists($path)){
+
+            File::delete($path);
+        }
+        $file = $request->file('image');
+        $ext = $file->getClientOriginalExtension();
+        $filename = time() .'.'.$ext;
+
+        $file->move('uploads/catogery',$filename);
+        $updatecat->image = $filename;
+    }
+
+
+
+
+    $updatecat->name = $request->input('name');
+    $updatecat->slug = $request->input('slug');
+    $updatecat->description = $request->input('description');
+    $updatecat->status = $request->input('status')==true? '1' : '0';
+    $updatecat->popular = $request->input('popular')==true? '1' : '0';
+    $updatecat->meta_title = $request->input('meta_title');
+    $updatecat->meta_keywords = $request->input('meta_keywords');
+    $updatecat->meta_descrip = $request->input('meta_descrip');
+    $updatecat->save();
+    return redirect('/dashboard')->with('status',"Catogeries Updated Successfully");
 
 }
 
