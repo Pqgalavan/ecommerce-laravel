@@ -28,6 +28,7 @@ class cart extends BaseController {
        $oldcart = ModelsCart::where('user_id', $userId) // First where clause
     ->where('product_id', $id) // Second where clause
     ->first();
+    $product = productmodel::where('id',$id)->first();
 
         if($oldcart){
             return redirect('/')->with('status',"The Product is Already In cart");
@@ -38,6 +39,7 @@ class cart extends BaseController {
             $cart->user_id = $userId;
             $cart->product_id = $id;
             $cart->qty = '1';
+            $cart->amount= $product->original_price;
             $cart->total_amount ='0';
      $cart->save();
 
@@ -145,12 +147,19 @@ public function placeorder( Request $req){
    if($cart){
 
      foreach($cart as $product){
+        // $userid = Auth::id();
      $orderss = new order();
      $orderss->product_id = $product->product_id;
      $orderss->qty= $product->qty;
      $orderss->amount = $product->amount;
-     $orderss->total_amount = $product->total_amount;
+     if($product->total_amount == '0' || $product->total_amount == null){
+        $orderss->total_amount = $product->amount;
+     }else{
+        $orderss->total_amount = $product->total_amount;
+     }
+
      $orderss->order_id = $rand_int;
+     $orderss->user_id =$userid;
      $orderss->save();
     $product->delete();
 
@@ -178,8 +187,8 @@ if(Auth::check()){
     $id = Auth::id();
 
 
-    $myorder = shipping::where('user_id',$id)->get();
-    return $myorder;
+    $myorder = order::where('user_id',$id)->get();
+    return view('user.myorder',compact('myorder'));
 
 
 }

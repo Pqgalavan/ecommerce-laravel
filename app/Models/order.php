@@ -19,7 +19,10 @@ class order extends Model
     'order_id',
   ];
 
+  public function get_product(){
 
+    return $this->belongsTo(productmodel::class,'product_id','id');
+}
 
 
 }

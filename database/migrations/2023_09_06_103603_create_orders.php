@@ -20,6 +20,7 @@ class CreateOrders extends Migration
             $table->integer('amount');
             $table->integer('total_amount');
             $table->string('order_id');
+            $table->integer('user_id');
 
             $table->timestamps();
         });
