@@ -54,6 +54,12 @@ Route::get('add_product',[Product::class,'add']);
 Route::post('add_product',[Product::class,'insert']);
 Route::get('get_product',[Product::class,'getproduct']);
 Route::put('edited/{id}',[Controller::class,'edited'])->name('update.category');
+Route::get('shipping',[Controller::class,'shipping']);
+Route::get('order/{id}',[Controller::class,'order']);
+
+
+
+// orderitems
 
 });
 
@@ -68,6 +74,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('placeorder',[cart::class,'placeorder']);
 
     Route::get('myorders',[cart::class,'myorders']);
+    Route::get('delete_cart_product/{id}',[cart::class,'delete_product']);
 
 
 

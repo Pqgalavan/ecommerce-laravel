@@ -5,7 +5,7 @@
       Tip 2: you can also add an image using data-image tag
   -->
     <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-        Creative Tim
+        Ecommerce Website
       </a></div>
     <div class="sidebar-wrapper">
       <ul class="nav">
@@ -41,22 +41,13 @@
             <p>View Product</p>
           </a>
         </li>
-        <li class="nav-item  {{Request::is()}}">
-          <a class="nav-link" href="./notifications.html">
+        <li class="nav-item  {{Request::is('shipping')? 'active' : '' ;}}">
+          <a class="nav-link" href="{{url('shipping')}}">
             <i class="material-icons">notifications</i>
-            <p>Notifications</p>
+            <p>Customer Orders</p>
           </a>
         </li>
-        <li class="nav-item  {{Request::is()}}">
-          <a class="nav-link" href="./rtl.html">
-            <i class="material-icons">language</i>
-            <p>RTL Support</p>
-          </a>
-        </li>
-        <li class="nav-item  {{Request::is()}}active-pro ">
-          <a class="nav-link" href="./upgrade.html">
-            <i class="material-icons">unarchive</i>
-            <p>Upgrade to PRO</p>
+
           </a>
         </li>
       </ul>

@@ -22,7 +22,7 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
         <div class="col-md-8">
           <div class="card mb-4">
             <div class="card-header py-3">
-              <h5 class="mb-0">Cart - 2 items</h5>
+              <h5 class="mb-0">Cart items</h5>
             </div>
 
             <div class="card-body">
@@ -62,7 +62,8 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
 
                   <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
                     title="Move to the wish list">
-                   Delete
+
+                   <a style="text-color:white;color:white"  href="{{url('delete_cart_product/'.$item->product_detail->id)}}">Delete</a>
                   </button>
                   <!-- Data -->
                 </div>

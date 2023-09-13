@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\catogeries;
+use App\Models\order;
+use App\Models\shipping;
 // use Facade\FlareClient\Stacktrace\File;
 // use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -127,6 +129,20 @@ public function edited(Request $request , $id){
     $updatecat->meta_descrip = $request->input('meta_descrip');
     $updatecat->save();
     return redirect('/dashboard')->with('status',"Catogeries Updated Successfully");
+
+}
+
+
+public function shipping(){
+
+    $shippment = shipping::all();
+    return view('admin.shippment',compact('shippment'));
+}
+
+public function order($id){
+    $orders = order::where('order_id',$id)->get();
+    // return $orders;
+    return view('admin.order',compact('orders'));
 
 }
 

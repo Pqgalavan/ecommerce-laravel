@@ -195,6 +195,21 @@ if(Auth::check()){
 
 
 }
+
+public function delete_product($id){
+    if(Auth::check()){
+
+        $user_id = Auth::id();
+
+
+        $myorder = ModelsCart::where('user_id',$user_id)->where('product_id',$id);
+        $myorder->delete();
+        return back()->with('status','Successfully Data Deleted');
+
+
+    }
+
+}
 };
 
 

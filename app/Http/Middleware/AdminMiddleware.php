@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-class AdminMiddleware
+class 3AdminMiddleware
 {
     /**
      * Handle an incoming request.

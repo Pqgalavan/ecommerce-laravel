@@ -25,11 +25,25 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link href="{{asset('admin/assets/css/material-dashboard.css?v=2.1.2')}}" rel="stylesheet" />
+  {{-- <link href="{{asset('admin/assets/css/material-dashboard.css?v=2.1.2')}}" rel="stylesheet" /> --}}
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('admin/assets/demo/demo.css')}}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <style>
+     a {
+      color: blue;              /* Text color */
+      text-decoration: none;   /* Remove underline */
+      font-weight: bold;       /* Bold text */
+    }
+
+    /* Style the anchor tag on hover */
+    a:hover {
+      color: red;              /* Text color on hover */
+    }
 </style>
 
 
@@ -38,7 +52,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 
-    @include('inc.navbar');
+    @include('inc.navbar')
 
 
             <div class=" justify-content-center">
